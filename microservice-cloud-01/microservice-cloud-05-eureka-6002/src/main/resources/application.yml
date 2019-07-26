@@ -1,0 +1,15 @@
+server:
+  port: 6002
+eureka:
+   instance:
+     hostname: eureka6002.com  #  eureka服务端的实例名称
+   client:
+     register-with-eureka: false   # 是否注册自己的信息到EurekaServer，默认是true 服务注册
+     fetch-registry: false      #服务发现 是否拉取其它服务的信息，默认是true
+     service-url: # Eureka客户端与Eureka服务端的交互地址，集群版配置对方的地址，单机版配置自己（如果不配置则默认本机8761端口）# EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+          #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+        # 集群版:  配置其他的Eureka  Server服务端访问地址
+          defaultZone: http://eureka6001.com:6001/eureka/
+   server:
+     enable-self-preservation: false # 关闭自我保护模式（缺省为打开）
+     eviction-interval-timer-in-ms: 1000 # 扫描失效服务的间隔时间(缺省为60*1000ms)
